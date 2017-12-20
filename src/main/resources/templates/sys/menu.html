@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>menu_list</title>
+    <link rel="stylesheet" th:href="@{/vendors/layui/css/layui.css}"/>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div th:include="nav :: nav"></div>
+    <div class="layui-body">
+        <div style="padding: 15px">
+            <table class="layui-hide" id="test"></table>
+        </div>
+    </div>
+    <div class="layui-footer" th:include="footer :: copy"></div>
+</div>
+<script th:src="@{/vendors/layui/layui.js}"></script>
+<script>
+    layui.use(['table', 'element'], function () {
+        var table = layui.table;
+        table.render({
+            elem: '#test',
+            url: '/sys/menu_list',
+            page: {
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'],
+                curr: 1,
+                groups: 1,
+                first: false,
+                last: false
+            },
+            cols: [[
+                {field: 'id', width: 80, title: 'ID', sort: true}
+                , {field: 'url', width: 100, title: '路劲'}
+                , {field: 'name', width: 80, title: '名称', sort: true}
+
+            ]]
+
+        });
+    });
+</script>
+</body>
+</html>
