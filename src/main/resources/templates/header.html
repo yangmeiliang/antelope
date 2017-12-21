@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>nav_left</title>
+    <title>header</title>
 </head>
-<body th:fragment="nav">
-<div class="layui-header">
-    <div class="layui-logo">XXX管理系统</div>
+<body>
+<div class="layui-header" th:fragment="header">
+    <div class="layui-logo"><a href="/index">XXX管理系统</a></div>
     <ul class="layui-nav layui-layout-left">
         <li class="layui-nav-item"><a href="">控制台</a></li>
         <li class="layui-nav-item"><a href="">商品管理</a></li>
@@ -31,22 +30,17 @@
         </li>
         <li class="layui-nav-item"><a href="">退出</a></li>
     </ul>
-</div>
-
-<div class="layui-side layui-bg-black">
-    <div class="layui-side-scroll">
-        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-        <ul class="layui-nav layui-nav-tree">
-            <li class="layui-nav-item">
-                <a href="javascript:;">系统设置</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">菜单设置</a></dd>
-                    <dd><a href="javascript:;">用户设置</a></dd>
-                    <dd><a href="javascript:;">权限设置</a></dd>
-                </dl>
-            </li>
-        </ul>
-    </div>
+    <div th:replace="nav-side :: nav-side"></div>
+    <script>
+        layui.use('element', function () {
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+            //监听导航点击
+            element.on('nav(demo)', function (elem) {
+                console.log(elem)
+                layer.msg(elem.text());
+            });
+        });
+    </script>
 </div>
 </body>
 </html>
