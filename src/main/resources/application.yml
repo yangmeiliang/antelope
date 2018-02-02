@@ -14,10 +14,25 @@ spring:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
   thymeleaf:
     cache: false
+    mode: HTML
+logging:
+  level: debug
 
-eureka:
-  client:
-    fetch-registry: false
-    register-with-eureka: false
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+dubbo:
+  enable: true
+  application:
+    name: antelope
+    owner: antelope
+  registry:
+    address: zookeeper://zookeeper1.dev.aaa.so:2181?backup=zookeeper2.dev.aaa.so:2181,zookeeper3.dev.aaa.so:2181
+    file: dubboCache/antelope_dev
+  monitor:
+    address: dubbo://dubbo-monitor.dev.aaa.so:7070
+  consumer:
+    enable: true
+    version: 1.0.4
+    group: aaa_default_dev
+    references:
+      - interface-class: com.aaa.order.apis.OrderDubboService
+        bean-id: orderDubboService
+
