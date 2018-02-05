@@ -33,7 +33,7 @@ public class SysServiceImpl implements SysService {
             predicates.forEach(criteriaQuery::where);
             return criteriaQuery.getRestriction();
         };
-        Page<SysMenu> list = sysMenuRepository.findAll(specification, pageable);
-        return list;
+
+        return sysMenuRepository.findAll(specification, pageable);
     }
 }

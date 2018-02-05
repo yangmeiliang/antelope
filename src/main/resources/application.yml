@@ -2,7 +2,7 @@ spring:
   application:
     name: antelope
   datasource:
-    url: jdbc:mysql://localhost:3306/antelope?useUnicode=true&amp;characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/antelope?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: dev
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -12,6 +12,7 @@ spring:
       ddl-auto: none
       naming:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database-platform: org.hibernate.dialect.MySQL5Dialect
   thymeleaf:
     cache: false
     mode: HTML
@@ -24,15 +25,21 @@ dubbo:
     name: antelope
     owner: antelope
   registry:
-    address: zookeeper://zookeeper1.dev.aaa.so:2181?backup=zookeeper2.dev.aaa.so:2181,zookeeper3.dev.aaa.so:2181
+    address: zookeeper://localhost:2181
     file: dubboCache/antelope_dev
   monitor:
-    address: dubbo://dubbo-monitor.dev.aaa.so:7070
+    address: dubbo://localhost:7070
   consumer:
     enable: true
-    version: 1.0.4
-    group: aaa_default_dev
+    version: 1.0.0
+    group: antelope_dev
     references:
-      - interface-class: com.aaa.order.apis.OrderDubboService
-        bean-id: orderDubboService
-
+      - interface-class: com.lmy.antelope.service.SysService
+        bean-id: sysService
+  provider:
+    enable: true
+    version: 1.0.0
+    group: antelope_dev
+    services:
+      - interface-class: com.lmy.antelope.service.SysService
+        ref: sysServiceImpl

@@ -82,7 +82,7 @@ public class DubboProperties {
          * 服务器端实现
          */
         @NotNull(message = "服务器端实现方式不能为空")
-        private String server = ServerName.NETTY4.getName();
+        private String server = ServerName.NETTY.getName();
     }
 
     /**
@@ -166,9 +166,9 @@ public class DubboProperties {
     @AllArgsConstructor
     public enum ServerName {
         /**
-         * netty4
+         * netty
          */
-        NETTY4("netty4");
+        NETTY("netty");
 
         private String name;
     }
