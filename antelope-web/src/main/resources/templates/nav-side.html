@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>nav-side</title>
+</head>
+<body th:fragment="nav-side">
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <ul class="layui-nav layui-nav-tree">
+            <li class="layui-nav-item">
+                <a href="javascript:;">系统设置</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/sys/menu.html">菜单设置</a></dd>
+                    <dd><a href="/sys/user.html">用户设置</a></dd>
+                    <dd><a href="/sys/role.html">权限设置</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

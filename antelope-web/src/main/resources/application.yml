@@ -1,0 +1,25 @@
+
+spring:
+  application:
+    name: antelope
+  datasource:
+    url: jdbc:mysql://localhost:3306/antelope?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  redis:
+    host: localhost
+
+server:
+  port: 8888
+logging:
+  level:
+    com.lmy: debug

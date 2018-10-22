@@ -1,0 +1,24 @@
+dubbo:
+  enable: true
+  application:
+    name: antelope
+    owner: antelope
+  registry:
+    address: zookeeper://localhost:2181
+    file: dubboCache/antelope_dev
+  monitor:
+    address: dubbo://localhost:7070
+  consumer:
+    enable: true
+    version: 1.0.0
+    group: antelope_dev
+    references:
+      - interface-class: com.lmy.antelope.service.SysService
+        bean-id: sysService
+  provider:
+    enable: true
+    version: 1.0.0
+    group: antelope_dev
+    services:
+      - interface-class: com.lmy.antelope.service.SysService
+        ref: sysServiceImpl

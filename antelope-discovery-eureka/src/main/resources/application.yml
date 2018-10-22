@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: antelope-discovery-eureka
+logging:
+  level:
+    root: info
+    com.lmy.antelope: debug
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: discovery-eureka
+    non-secure-port: ${server.port}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
