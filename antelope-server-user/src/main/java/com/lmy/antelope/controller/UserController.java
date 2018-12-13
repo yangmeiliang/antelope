@@ -2,6 +2,7 @@ package com.lmy.antelope.controller;
 
 import com.lmy.antelope.domain.entity.User;
 import com.lmy.antelope.domain.repository.UserRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +23,18 @@ public class UserController {
 
     private UserRepository userRepository;
 
+    @HystrixCommand(fallbackMethod = "findById")
     @GetMapping("/{id}")
     public User userInfo(@PathVariable Integer id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }
 
+
+    public User findById(Integer id) {
+        User user = new User();
+        user.setId(0);
+        return user;
+    }
 
 }

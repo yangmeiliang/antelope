@@ -26,7 +26,7 @@ public class SysServiceImpl implements SysService {
 
     @Override
     public Page<SysMenu> pageMenuList() {
-        Pageable pageable = new PageRequest(0, 10);
+        Pageable pageable = PageRequest.of(0, 10);
         Specification<SysMenu> specification = (root, criteriaQuery, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
             predicates.add(criteriaBuilder.equal(root.get("createTime").as(String.class), "2017-12-11"));

@@ -23,8 +23,10 @@
         <module>antelope-config-server</module>
         <module>antelope-discovery-eureka</module>
         <module>antelope-server-user</module>
+        <module>antelope-server-user-fegin</module>
         <module>antelope-server-business</module>
         <module>antelope-jpa</module>
+        <module>antelope-mybatis</module>
         <module>antelope-web</module>
         <module>antelope-test</module>
     </modules>
@@ -40,6 +42,8 @@
         <zkclient.version>0.9</zkclient.version>
         <netty-all.version>5.0.0.Alpha2</netty-all.version>
         <easyexcel.version>1.1.0</easyexcel.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
 
         <thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
         <thymeleaf-extras-java8time.version>3.0.0.RELEASE</thymeleaf-extras-java8time.version>
@@ -54,6 +58,30 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-feign</artifactId>
+                <version>LATEST</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>2.0.3-beta1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper</artifactId>
+                <version>4.0.3</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>

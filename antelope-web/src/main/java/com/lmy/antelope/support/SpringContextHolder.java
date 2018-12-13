@@ -1,4 +1,4 @@
-package com.lmy.antelope.config;
+package com.lmy.antelope.support;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

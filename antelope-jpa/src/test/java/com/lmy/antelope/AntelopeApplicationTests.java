@@ -4,8 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.lmy.antelope.domain.entities.Coupon;
 import com.lmy.antelope.repository.CouponRepository;
 import com.lmy.antelope.service.CouponService;
-import com.lmy.antelope.utils.MemcachedUtil;
-import net.rubyeye.xmemcached.MemcachedClient;
+import org.hibernate.criterion.Restrictions;
 import org.joor.Reflect;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -25,8 +29,6 @@ public class AntelopeApplicationTests {
     private CouponService couponService;
     @Autowired
     private CouponRepository couponRepository;
-    @Autowired
-    private MemcachedClient client;
 
     @Test
     public void findOne() {
@@ -52,15 +54,24 @@ public class AntelopeApplicationTests {
     @Test
     public void test01() throws Exception {
 
-        MemcachedUtil.del("aaa");
-        MemcachedUtil.del("bbb");
+//        MemcachedUtil.del("aaa");
+//        MemcachedUtil.del("bbb");
+//
+//        System.out.println(MemcachedUtil.incr("aaa", 10, 1));
+//        System.out.println(MemcachedUtil.incr("aaa", 20, 1));
+//        System.out.println(MemcachedUtil.incr("aaa", 30, 1));
+//        System.out.println(MemcachedUtil.incr("aaa", 40, 1));
+//
+//        System.out.println(MemcachedUtil.incr("bbb", 40, 1));
 
-        System.out.println(MemcachedUtil.incr("aaa", 10, 1));
-        System.out.println(MemcachedUtil.incr("aaa", 20, 1));
-        System.out.println(MemcachedUtil.incr("aaa", 30, 1));
-        System.out.println(MemcachedUtil.incr("aaa", 40, 1));
+        Specification<Coupon> specification = (root, query, builder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            predicates.add(builder.like(root.get("startTime").as(String.class), "%-07-24 %"));
+            return builder.and(predicates.toArray(new Predicate[0]));
+        };
 
-        System.out.println(MemcachedUtil.incr("bbb", 40, 1));
+        List<Coupon> all = couponRepository.findAll(specification);
+        System.out.println(JSON.toJSONString(all));
 
     }
 

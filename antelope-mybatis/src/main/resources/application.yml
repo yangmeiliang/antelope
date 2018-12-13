@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: antelope-mybatis
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/antelope?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+logging:
+  level:
+    root: info
+    com.lmy.antelope: debug
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql: debug
+memcached:
+  default-servers: 192.168.200.244:11211
+
+server:
+  port: 8888
+eureka:
+  instance:
+    hostname: server1
+    non-secure-port: ${server.port}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8762/eureka/,http://localhost:8763/eureka/
+  server:
+    enable-self-preservation: false
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  configuration-properties:
+    style: normal
+#  type-aliases-package: com.lmy
+
+#  config-location: classpath:mybatis-config.xml
+

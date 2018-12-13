@@ -13,4 +13,15 @@ eureka:
 server:
   port: 9001
 
+antelope-server-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+server-user2:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

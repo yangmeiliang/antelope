@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: antelope-server-user-feign
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/antelope?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    service-url:
+      #      defaultZone: http://111.231.85.42:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+logging:
+  level:
+    root: info
+    com.lmy.antelope: debug
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql: debug
+server:
+  port: 7001
+
+

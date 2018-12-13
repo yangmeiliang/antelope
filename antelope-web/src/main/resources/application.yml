@@ -17,9 +17,14 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5Dialect
   redis:
     host: localhost
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 
 server:
   port: 8888
 logging:
   level:
     com.lmy: debug
+    org.hibernate: debug

@@ -1,4 +1,4 @@
-package com.lmy.antelope.config;
+package com.lmy.config;
 
 import lombok.Getter;
 import lombok.Setter;
