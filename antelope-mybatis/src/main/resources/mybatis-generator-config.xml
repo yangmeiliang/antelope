@@ -22,7 +22,7 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
-
+        <plugin type="com.generator.MyPlugin"/>
         <commentGenerator type="com.generator.MyCommentGenerator">
             <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
             <property name="suppressAllComments" value="false"/>
@@ -56,7 +56,7 @@
         <javaClientGenerator targetPackage="cn.dxy.openclass.ms.domain.mapper" type="XMLMAPPER"
                              targetProject="antelope-mybatis/gen/src/main/java">
             <property name="enableSubPackages" value="true"/>
-            <property name="rootInterface" value="cn.dxy.openclass.ms.support.mybatis.BaseMapper"/>
+            <property name="rootInterface" value="cn.dxy.openclass.ms.support.mybatis.BaseMapper&lt;T&gt;"/>
         </javaClientGenerator>
 
         <table tableName="%"
