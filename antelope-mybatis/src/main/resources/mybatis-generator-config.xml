@@ -29,7 +29,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/antelope?useSSL=false"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/open-class-course?useSSL=false"
                         userId="root" password="root">
             <property name="useInformationSchema" value="true"/>
             <property name="nullCatalogMeansCurrent" value="true"/>
@@ -39,22 +39,24 @@
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.lmy.antelope.domain.entities"
+        <javaModelGenerator targetPackage="cn.dxy.openclass.ms.domain.entity"
                             targetProject="antelope-mybatis/gen/src/main/java">
             <property name="constructorBased" value="false"/>
-            <property name="enableSubPackages" value="false"/>
+            <property name="enableSubPackages" value="true"/>
+            <property name="rootClass" value="cn.dxy.openclass.ms.support.mybatis.BaseDomain"/>
             <property name="immutable" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.lmy.antelope.mapper"
+        <sqlMapGenerator targetPackage="cn.dxy.openclass.ms.domain.mapper"
                          targetProject="antelope-mybatis/gen/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="com.lmy.antelope.mapper" type="XMLMAPPER"
+        <javaClientGenerator targetPackage="cn.dxy.openclass.ms.domain.mapper" type="XMLMAPPER"
                              targetProject="antelope-mybatis/gen/src/main/java">
             <property name="enableSubPackages" value="true"/>
+            <property name="rootInterface" value="cn.dxy.openclass.ms.support.mybatis.BaseMapper"/>
         </javaClientGenerator>
 
         <table tableName="%"
@@ -64,8 +66,14 @@
                enableUpdateByExample="false"
                enableDeleteByPrimaryKey="false"
                enableSelectByPrimaryKey="false"
-               enableUpdateByPrimaryKey="false"
-        />
+               enableUpdateByPrimaryKey="false">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<domainObjectRenamingRule searchString="^OpenClass" replaceString="" />-->
+            <ignoreColumn column="created_time"/>
+            <ignoreColumn column="modified_time"/>
+            <ignoreColumn column="id"/>
+            <ignoreColumn column="is_deleted"/>
+        </table>
     </context>
 
 </generatorConfiguration>
