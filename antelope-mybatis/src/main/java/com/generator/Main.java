@@ -7,6 +7,6 @@ package com.generator;
 public class Main {
 
     public static void main(String[] args) {
-        MybatisGenerator.generator("mybatis-generator-config.xml");
+        MybatisGenerator.generator("mybatis-generator-config-activity.xml");
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    @Value("${testkey}")
+    @Value("${testkey:test}")
     private String key;
 
     @GetMapping("/")

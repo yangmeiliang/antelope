@@ -39,7 +39,9 @@ mybatis:
     map-underscore-to-camel-case: true
   configuration-properties:
     style: normal
-#  type-aliases-package: com.lmy
+  mapper-locations: classpath*:com/lmy/antelope/mapper/*Mapper.xml
+  type-aliases-package: com.lmy.antelope.domain.entities
 
 #  config-location: classpath:mybatis-config.xml
-
+mapper:
+  not-empty: false

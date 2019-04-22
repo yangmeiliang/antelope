@@ -10,7 +10,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.lmy</groupId>
     <artifactId>antelope-config-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 

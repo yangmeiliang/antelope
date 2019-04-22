@@ -20,6 +20,7 @@ import javax.persistence.criteria.Predicate;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -45,10 +46,18 @@ public class AntelopeApplicationTests {
 //        System.out.println(couponApplyCategory);
 //        System.out.println(JSON.toJSONString(couponApplyCategory));
 
-        List<Coupon> byNameLike = couponRepository.findByNameLike("券%");
-        System.out.println(JSON.toJSONString(byNameLike));
-        byNameLike = couponRepository.findByNameLike("券%", new PageRequest(1, 5, new Sort(Sort.Direction.DESC, "id")));
-        System.out.println(JSON.toJSONString(byNameLike));
+        Coupon coupon = new Coupon();
+        coupon.setName("测试");
+        Coupon save = couponRepository.save(coupon);
+        System.out.println(JSON.toJSONString(coupon));
+        System.out.println(JSON.toJSONString(save));
+        Optional<Coupon> couponOptional = couponRepository.findById(save.getId());
+        System.out.println(JSON.toJSONString(couponOptional.get()));
+
+//        List<Coupon> byNameLike = couponRepository.findByNameLike("券%");
+//        System.out.println(JSON.toJSONString(byNameLike));
+//        byNameLike = couponRepository.findByNameLike("券%", new PageRequest(1, 5, new Sort(Sort.Direction.DESC, "id")));
+//        System.out.println(JSON.toJSONString(byNameLike));
     }
 
     @Test

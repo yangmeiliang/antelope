@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: webflux
+server:
+  port: 8201
+logging:
+  level:
+    cm.lmy: debug
+    org.springframework.cloud: debug
+
+

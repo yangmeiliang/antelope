@@ -22,7 +22,7 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
-
+        <plugin type="com.generator.MyPlugin"/>
         <commentGenerator type="com.generator.MyCommentGenerator">
             <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
             <property name="suppressAllComments" value="false"/>
@@ -31,7 +31,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://192.168.200.77:3306/cms"
                         userId="cms" password="HvvjTaFynnD2Ae4WufHH">
-            <property name="useInformationSchema" value="true" />
+            <property name="useInformationSchema" value="true"/>
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
@@ -39,30 +39,72 @@
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.dxy.platform.tod.openclass.domain.entities" targetProject="antelope-mybatis/gen/src/main/java">
+        <javaModelGenerator targetPackage="cn.dxy.openclass.ms.domain.cms.entity"
+                            targetProject="antelope-mybatis/gen/src/main/java">
             <property name="constructorBased" value="false"/>
-            <property name="enableSubPackages" value="false"/>
+            <property name="enableSubPackages" value="true"/>
             <property name="immutable" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.dxy.platform.tod.openclass.domain.mapper" targetProject="antelope-mybatis/gen/src/main/resources">
+        <sqlMapGenerator targetPackage="cn.dxy.openclass.ms.domain.cms.mapper"
+                         targetProject="antelope-mybatis/gen/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="com.dxy.platform.tod.openclass.domain.mapper" type="XMLMAPPER" targetProject="antelope-mybatis/gen/src/main/java">
+        <javaClientGenerator targetPackage="cn.dxy.openclass.ms.domain.cms.mapper" type="XMLMAPPER"
+                             targetProject="antelope-mybatis/gen/src/main/java">
             <property name="enableSubPackages" value="true"/>
+            <property name="rootInterface" value="cn.dxy.openclass.ms.support.mybatis.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="%"
+        <!--<table tableName="%open%"-->
+               <!--enableCountByExample="false"-->
+               <!--enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableDeleteByPrimaryKey="false"-->
+               <!--enableSelectByPrimaryKey="true"-->
+               <!--enableUpdateByPrimaryKey="false">-->
+            <!--&lt;!&ndash;<property name="useActualColumnNames" value="false"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="^OpenClass" replaceString="" />&ndash;&gt;-->
+            <!--&lt;!&ndash;<ignoreColumn column="created_time"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ignoreColumn column="modified_time"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ignoreColumn column="id"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ignoreColumn column="is_deleted"/>&ndash;&gt;-->
+        <!--</table>-->
+
+        <!--<table tableName="%pack_course%"-->
+               <!--enableCountByExample="false"-->
+               <!--enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableDeleteByPrimaryKey="false"-->
+               <!--enableSelectByPrimaryKey="true"-->
+               <!--enableUpdateByPrimaryKey="false">-->
+            <!--&lt;!&ndash;<property name="useActualColumnNames" value="false"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="^OpenClass" replaceString="" />&ndash;&gt;-->
+            <!--&lt;!&ndash;<ignoreColumn column="created_time"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ignoreColumn column="modified_time"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ignoreColumn column="id"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ignoreColumn column="is_deleted"/>&ndash;&gt;-->
+        <!--</table>-->
+
+        <table tableName="%remedial_class%"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"
                enableDeleteByPrimaryKey="false"
-               enableSelectByPrimaryKey="false"
-               enableUpdateByPrimaryKey="false"
-        />
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="false">
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<domainObjectRenamingRule searchString="^OpenClass" replaceString="" />-->
+            <!--<ignoreColumn column="created_time"/>-->
+            <!--<ignoreColumn column="modified_time"/>-->
+            <!--<ignoreColumn column="id"/>-->
+            <!--<ignoreColumn column="is_deleted"/>-->
+        </table>
     </context>
 
 </generatorConfiguration>

@@ -14,7 +14,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @EnableEurekaServer
 @SpringBootApplication
-@MapperScan(value = "com.lmy.antelope.mapper", properties = {"style=normal"})
+@MapperScan(value = "com.lmy.antelope.mapper")
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

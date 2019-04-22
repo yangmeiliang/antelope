@@ -28,6 +28,12 @@
             <property name="suppressAllComments" value="false"/>
         </commentGenerator>
 
+        <!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://127.0.0.1:3306/open-class-course?useSSL=false"-->
+                        <!--userId="root" password="root">-->
+            <!--<property name="useInformationSchema" value="true"/>-->
+            <!--<property name="nullCatalogMeansCurrent" value="true"/>-->
+        <!--</jdbcConnection>-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                         connectionURL="jdbc:mysql://127.0.0.1:3306/open-class-course?useSSL=false"
                         userId="root" password="root">
@@ -65,7 +71,7 @@
                enableSelectByExample="false"
                enableUpdateByExample="false"
                enableDeleteByPrimaryKey="false"
-               enableSelectByPrimaryKey="false"
+               enableSelectByPrimaryKey="true"
                enableUpdateByPrimaryKey="false">
             <property name="useActualColumnNames" value="false"/>
             <!--<domainObjectRenamingRule searchString="^OpenClass" replaceString="" />-->

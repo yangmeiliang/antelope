@@ -3,6 +3,7 @@ package com.lmy.antelope.domain.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+//@DynamicInsert
 @Table(name = "coupon")
 public class Coupon {
 
